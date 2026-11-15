@@ -1,130 +1,136 @@
 # Internship Tracker
 
-A Django web application to track your internship and job applications. Log applications, update their status, filter/search your list, and monitor stats like interview and offer rates.
+A Django-based web application that helps users manage and track their internship and job applications in one place.
 
----
+Users can create an account, add applications, update application details, track application statuses, and view dashboard statistics.
 
 ## Features
 
-- User authentication (signup, login, logout)
-- Add, edit, and delete applications
-- Dashboard analatics (total, interview rate, offer rate)
-- Track status: Applied, Interview, Rejected, Offer
-- Filter applications by status and search by company or role
-- Paginated application list
+- User registration, login, and logout
+- Add, edit, and delete job or internship applications
+- Dashboard displaying application statistics
+- Track application statuses such as Applied, Interview, Selected, and Rejected
+- Search applications by company or job role
+- Filter applications by status
+- Pagination for application records
+- User-specific application management
 
----
+## Technology Stack
 
-## Tech Stack
+**Backend:** Python, Django  
+**Frontend:** HTML, CSS, Bootstrap  
+**Database:** MySQL  
+**Authentication:** Django Authentication System  
+**ORM:** Django ORM  
+**Version Control:** Git and GitHub
 
-Backend
+## Project Structure
 
-- Python 3
-- Django
-- MySQL
-- Django ORM (Aggregation, Filtering, Pagination)
-
-Frontend
-
-- HTML
-- Bootstrap 5
-- Custom CSS (static files)
-
----
-
-## Architecture Overview
-
-- accounts app → Authentication logic
-- applications app → Core application tracking features
-- User-based data ownership enforced using ForeignKey
-- Secure CRUD operations with ownership validation
-
----
-
-## Setup Instructions
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/z-ABYa/tracker/
-cd tracker
+```text
+Internship-Tracker/
+│
+├── accounts/
+│   ├── views.py
+│   ├── urls.py
+│   └── ...
+│
+├── applications/
+│   ├── models.py
+│   ├── views.py
+│   ├── forms.py
+│   ├── urls.py
+│   └── ...
+│
+├── tracker/
+│   └── settings/
+│       ├── common.py
+│       ├── dev.py
+│       └── prod.py
+│
+├── templates/
+├── static/
+│   └── css/
+├── api/
+├── manage.py
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
 
-### 2. Create and Activate a Virtual Environment
+## Installation and Setup
+
+### 1. Clone the repository
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate (macOS/Linux)
-venv\Scripts\activate (Windows)
+git clone https://github.com/harshitha-s-14/Internship-Tracker.git
+cd Internship-Tracker
 ```
 
-### 3. Install Dependencies
+### 2. Create and activate a virtual environment
+
+**Windows:**
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure Database
+### 4. Create the MySQL database
 
-Create a new MySQL DB:
+Open MySQL and execute:
+
 ```sql
-create database tracker;
-use tracker;
+CREATE DATABASE tracker;
 ```
 
-Then change 'PASSWORD' and 'USER' in `settings.py` file:
+### 5. Configure environment variables
 
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tracker',
-        'HOST': 'localhost',
-        'USER': '<your_mysql_username>',
-        'PASSWORD': '<your_mysql_password>',
-    }
-}
+Create a `.env` file in the project root directory.
+
+Add your own local configuration:
+
+```env
+SECRET_KEY=your_django_secret_key
+DB_PASSWORD=your_mysql_password
 ```
 
-### 5. Create a Superuser (Optional)
+Do not upload your `.env` file or share your passwords publicly.
 
-To access the Django admin panel:
-
-```bash
-python manage.py createsuperuser
-```
-
-### 6. Apply Migrations
+### 6. Apply database migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### 7. Run Development Server
+### 7. Create a superuser
+
+```bash
+python manage.py createsuperuser
+```
+
+### 8. Run the development server
 
 ```bash
 python manage.py runserver
 ```
 
-Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
+Open the application in your browser:
 
----
-
-## Project Structure
-
-```
-tracker/
-│
-├── accounts/
-├── applications/
-├── templates/
-├── tracker/
-│   └── settings.py/
-├── static/
-│   └── css/
-├── manage.py
-├── requirements.txt
-└── README.md
+```text
+http://127.0.0.1:8000/
 ```
 
----
+## Learning Outcomes
+
+- Developed a full-stack web application using Django.
+- Implemented user authentication and authorization.
+- Performed database operations using Django ORM and MySQL.
+- Built CRUD functionality for managing applications.
+- Implemented search, filtering, and dashboard statistics.
+- Used Git and GitHub for version control.
